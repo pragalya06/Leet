@@ -1,5 +1,27 @@
 class Solution {
     public int characterReplacement(String s, int k) {
+        // int [] hash = new int[26];
+        // int r = 0,l = 0,maxfrq = 0,max = 0;
+        // while(r < s.length()){
+        //     hash[s.charAt(r) - 'A']++;
+        //     maxfrq = Math.max(maxfrq,hash[s.charAt(r)-'A']);
+        //     while(s.length()-maxfrq > k){
+        //         hash[s.charAt(r)-'A']--;
+        //         if(hash[s.charAt(r)-'A'] == 0)
+        //     }
+
+        // }
+
+
+
+
+
+
+
+
+
+
+
         HashMap<Character,Integer> mp = new HashMap<>();
         int l = 0,r = 0,maxfreq = 0,max = 0;
         while(r < s.length()){
@@ -7,7 +29,7 @@ class Solution {
             maxfreq = Math.max(maxfreq,mp.get(s.charAt(r)));
             while((r-l+1) - maxfreq > k){
                 mp.put(s.charAt(l),mp.get(s.charAt(l))-1);
-                if(mp.get(s.charAt(l)) == 0) mp.remove(s.charAt(l));
+                // if(mp.get(s.charAt(l)) == 0) mp.remove(s.charAt(l));
                 l++;
             }
             if ((r-l+1) - maxfreq <= k){
