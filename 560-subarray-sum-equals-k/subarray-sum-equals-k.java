@@ -13,16 +13,13 @@ class Solution {
         //     if(sum==k) c++;
         // }
         // return c;
-        int count = 0;
-        for(int i = 0;i< nums.length;i++){
-            int sum = 0;
-            for(int j = i;j<nums.length;j++){
-                sum+= nums[j];
-                if(sum == k){
-                    count++;
-                }
-            }
-            
+        int count = 0,sum = 0;
+        HashMap <Integer,Integer> mp = new HashMap<>();
+        mp.put(0,1);
+        for(int i = 0;i<nums.length;i++){
+            sum+=nums[i];
+            count += mp.getOrDefault(sum-k,0);
+            mp.put(sum,mp.getOrDefault(sum,0)+1);
         }
         return count;
     }
