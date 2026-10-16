@@ -5,21 +5,13 @@ class Solution {
         int lmax=0,rmax=0;
         while(l <= r){
             if(h[l]<=h[r]){
-                if(lmax > h[l]){
-                    total+=lmax-h[l];
-                }
-                else{
-                    lmax = h[l];
-                }
+                lmax = Math.max(h[l],lmax);
+                total+= lmax-h[l];
                 l++;
             }
             else{
-                if(rmax>h[r]){
-                    total+=rmax-h[r];
-                }
-                else{
-                    rmax = h[r];
-                }
+                rmax = Math.max(rmax,h[r]);
+                total+=rmax-h[r];
                 r--;
             }
         }
