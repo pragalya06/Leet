@@ -1,5 +1,29 @@
 class Solution {
     public int trap(int[] h) {
+        int n = h.length;
+        int l =0,r=n-1,total = 0;
+        int lmax=0,rmax=0;
+        while(l <= r){
+            if(h[l]<=h[r]){
+                if(lmax > h[l]){
+                    total+=lmax-h[l];
+                }
+                else{
+                    lmax = h[l];
+                }
+                l++;
+            }
+            else{
+                if(rmax>h[r]){
+                    total+=rmax-h[r];
+                }
+                else{
+                    rmax = h[r];
+                }
+                r--;
+            }
+        }
+        return total;
         // int lmax=0;
         // int rmax=0;
         // int n=h.length;
@@ -19,24 +43,26 @@ class Solution {
         //         r--;
         //     }
         // }
+
+        // Brute Solution  T.C : O(N) S.C : O(N)
         // return water;
-        int n = h.length;
-        int [] suffixmax = new int[n];
-        suffixmax[n-1] = h[n-1];
-        int [] prefixmax = new int[n];
-        prefixmax[0] = h[0];
-        for(int i = 1;i<n;i++){
-            prefixmax[i] = Math.max(prefixmax[i-1],h[i]);
-            suffixmax[n-i-1] = Math.max(suffixmax[n-i],h[n-i-1]);
-        }
-        int total = 0;
-        for(int i = 0;i<n;i++){
-            int rmax = suffixmax[i];
-            int lmax = prefixmax[i];
-            if(h[i] <suffixmax[i] && h[i] <prefixmax[i] ){
-                total += Math.min(rmax,lmax)-h[i];
-            }
-        }
-        return total;
+        // int n = h.length;
+        // int [] suffixmax = new int[n];
+        // suffixmax[n-1] = h[n-1];
+        // int [] prefixmax = new int[n];
+        // prefixmax[0] = h[0];
+        // for(int i = 1;i<n;i++){
+        //     prefixmax[i] = Math.max(prefixmax[i-1],h[i]);
+        //     suffixmax[n-i-1] = Math.max(suffixmax[n-i],h[n-i-1]);
+        // }
+        // int total = 0;
+        // for(int i = 0;i<n;i++){
+        //     int rmax = suffixmax[i];
+        //     int lmax = prefixmax[i];
+        //     if(h[i] <suffixmax[i] && h[i] <prefixmax[i] ){
+        //         total += Math.min(rmax,lmax)-h[i];
+        //     }
+        // }
+        // return total;
     }
 }
