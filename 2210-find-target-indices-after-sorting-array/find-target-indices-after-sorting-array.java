@@ -1,4 +1,5 @@
 class Solution {
+    //binary search
     int bsearch(int [] nums,int target,boolean isfirst){
         int start = 0;
         int end = nums.length-1;
